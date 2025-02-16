@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>股票关联分析</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>股票分析工具</h2>
+        <label for="stock1">股票代码:</label>
+        <input type="text" id="stock1" placeholder="输入股票代码 (如: 600519.SH)">
+
+        <label for="max_lag">最大滞后阶数:</label>
+        <input type="number" id="max_lag" placeholder="输入最大滞后阶数 (默认10)" value="10">
+
+        <button onclick="fetchStockData()">提交</button>
+
+        <div class="output" id="result">
+            <h3>分析结果:</h3>
+            <p id="text1"></p>
+            <img id="img_lag_effect" src="" alt="ACF/PACF 图">
+
+            <p id="text2"></p>
+            <img id="img_rolling_correlation" src="" alt="滚动相关性图">
+
+            <p id="correlation"></p>
+            <img id="img_cor" src="" alt="相关性散点图">
+
+            <p><strong>Beta 值:</strong> <span id="beta"></span></p>
+            <p><strong>平均收益:</strong> <span id="mean_return"></span></p>
+            <p><strong>波动率 (标准差):</strong> <span id="volatility"></span></p>
+            <p><strong>偏度 (Skewness):</strong> <span id="skewness"></span></p>
+            <p><strong>峰度 (Kurtosis):</strong> <span id="kurtosis"></span></p>
+        </div>
+    </div>
+</body>
+
+</html>
