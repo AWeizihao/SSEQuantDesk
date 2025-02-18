@@ -3,17 +3,35 @@ import numpy as np
 import akshare as ak
 import matplotlib.pyplot as plt
 import matplotlib
-matplotlib.use('Agg')  # 服务器模式
+matplotlib.use('Agg')  # 关闭GUI
+plt.switch_backend('Agg')
 import seaborn as sns
 from scipy.stats import skew, kurtosis
 import statsmodels.api as sm
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from flask import Flask, render_template, request, jsonify
+from waitress import serve
+serve(app, host="0.0.0.0", port=5000) #waitress服务器
 import io as io
 import base64 as base64
+import time
+import logging
 
+# 记录日志
+logging.basicConfig(filename="performance.log", level=logging.INFO)
 
+@app.before_request
+def start_timer():
+    request.start_time = time.perf_counter()
 
+@app.after_request
+def log_request_time(response):
+    elapsed_time = time.perf_counter() - request.start_time
+    response.headers["X-Response-Time"] = str(elapsed_time)
+    log_message = f"Request {request.method} {request.path} took {elapsed_time:.6f} seconds"
+    print(log_message)
+    logging.info(log_message)  # 存入日志
+    return response
 
 app = Flask(__name__)
 
@@ -252,4 +270,4 @@ def trend():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,threaded=True)
