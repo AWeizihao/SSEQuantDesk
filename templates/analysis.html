@@ -1,0 +1,44 @@
+<h1>股票-上证指数相关性分析</h1>
+<label for="stock1">股票代码:</label>
+<input type="text" id="stock1" placeholder="输入股票代码 (如: 600519.SH)">
+
+<label for="max_lag">最大滞后阶数:</label>
+<input type="number" id="max_lag" placeholder="输入最大滞后阶数 (默认10)" value="10">
+
+<button onclick="fetchStockData()">提交</button>
+
+<div class="output" id="result">
+    <h3>1 收益率自相关（ACF）/偏自相关（PACF） </h3>
+    <p id="text1"></p>
+    <figure>
+        <img id="img_lag_effect" src="" alt="ACF/PACF 图">
+        <figcaption>ACF/PACF 图</figcaption>
+    </figure>
+
+
+    <h3>2 收益率滚动相关分析</h3>
+    <p id="text2"></p>
+    <figure>
+        <img id="img_rolling_correlation" src="" alt="滚动相关性图">
+        <figcaption>滚动相关性图</figcaption>
+    </figure>
+
+
+    <h3>3 收益率线性相关性分析</h4>
+        <p id="correlation"></p>
+        <figure>
+            <img id="img_cor" src="" alt="相关性散点图">
+            <figcaption>相关性散点图</figcaption>
+        </figure>
+
+        <h3>4 简易统计分析</h3>
+        <p><strong>Beta 值:</strong> <span id="beta"></span></p>
+        <p><strong>平均收益:</strong> <span id="mean_return"></span></p>
+        <p><strong>波动率 (标准差):</strong> <span id="volatility"></span></p>
+        <p><strong>偏度 (Skewness):</strong> <span id="skewness"></span></p>
+        <p><strong>峰度 (Kurtosis):</strong> <span id="kurtosis"></span></p>
+        <p><strong>上证平均收益:</strong> <span id="mean_return_sh"></span></p>
+        <p><strong>上证波动率 (标准差):</strong> <span id="volatility_sh"></span></p>
+        <p><strong>上证偏度 (Skewness):</strong> <span id="skewness_sh"></span></p>
+        <p><strong>上证峰度 (Kurtosis):</strong> <span id="kurtosis_sh"></span></p>
+</div>

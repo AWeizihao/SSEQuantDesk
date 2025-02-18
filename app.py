@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 import akshare as ak
-import matplotlib
-matplotlib.use('Agg')  # 解决 "main thread is not in the main loop" 问题
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')  # 服务器模式
 import seaborn as sns
 from scipy.stats import skew, kurtosis
 import statsmodels.api as sm
@@ -13,16 +13,16 @@ import io as io
 import base64 as base64
 
 
+
+
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('base.html', content_template="index.html")
 
 # HDF5 文件
 file_path = '.\Database\sh_stock_data.h5'
-
-# 提取股票代码为 '600004'，日期范围为 '2023-01-01' 至 '2023-12-31' 的 'close' 列数据
 
 start_date = '2023-01-01'
 end_date = '2023-12-31'
@@ -50,23 +50,20 @@ def merge_stocks(data1, data2):
     merged_data = data1.join(data2, how='inner')  # 仅保留共同日期的数据
     return merged_data
 
-def get_shanghai_index(start_date, end_date):# 获取上证数据
+def get_shanghai_index(start_date, end_date,info):# 获取上证数据
     sh_index = ak.stock_zh_index_daily(symbol="sh000001")  # 上证指数代码
     sh_index['date'] = pd.to_datetime(sh_index['date'])  # 转换日期
     sh_index = sh_index[(sh_index['date'] >= start_date) & (sh_index['date'] <= end_date)]
     sh_index['log_return'] = np.log(sh_index['close'] / sh_index['close'].shift(1))  # 计算对数收益率
     
-    return sh_index[['date', 'close', 'log_return']].dropna().set_index('date')
+    return sh_index[['date', f"{info}"]].dropna().set_index('date')
 
 def statistic_overview(data):
     #data是一个pandas数据库DataFrame，要求有以下结构：以日期为索引，任意列数，不同列数据属性一致。
     # 计算统计特征，包括平均收益率、标准差、偏度、峰度
-    return  {
-    'Mean Return': data.mean(),
-    'Volatility (Std Dev)':data.std(),
-    'Skewness': data.apply(skew),
-    'Kurtosis': data.apply(kurtosis)
-}
+    if data.empty:
+        raise ValueError(f"股票统计 {stock_code} 在 {start_date} ~ {end_date} 无数据！")
+    return  data.mean(),data.std(),data.apply(skew),data.apply(kurtosis)
 
 def cumulative_return_visible(data):
     #data是一个包含列名为'stock_log_return'和'sh_index_log_return'的两列数据表。
@@ -76,7 +73,7 @@ def cumulative_return_visible(data):
 
     # 绘制累积收益率曲线
     plt.figure(figsize=(12, 6))
-    plt.plot(data.index, data['stock_cum_return'], label=f'Stock {stock_code} Cumulative Return', color='blue')
+    plt.plot(data.index, data['stock_cum_return'], label=f'Stock  Cumulative Return', color='blue')
     plt.plot(data.index, data['sh_index_cum_return'], label='Shanghai Index Cumulative Return', color='red')
 
     plt.xlabel('Date')
@@ -202,9 +199,11 @@ def Stock_SH():
         stock = request_data.get("stock1", "Stock1")  # 获取股票名称
         max_lag = int(request_data.get("max_lag", 10))  # 获取最大滞后阶数
 
-        sh_index_data = get_shanghai_index(start_date, end_date)# 读取上证指数
+        sh_index_data = get_shanghai_index(start_date, end_date,'log_return')# 读取上证指数
         stock_data=load_stock_data(stock,start_date, end_date)
         data=merge_stocks(sh_index_data, stock_data)
+        if data.empty:
+            raise ValueError("合并后的数据为空，可能是上证指数或股票数据缺失！")
 
         # 生成 ACF/PACF 图
         image_base64 = lag_effect(data, stock, '000001.ss', max_lag)
@@ -212,22 +211,26 @@ def Stock_SH():
         # 计算相关性并生成散点图
         correlation, image_cor = cor(data, stock, '000001.ss')
 
-        mean1,vol,skew,kurt=statistic_overview(data)
-
+        mean1,vol1,skew1,kurt1=statistic_overview(stock_data)
+        mean2,vol2,skew2,kurt2=statistic_overview(sh_index_data)
 
         # 返回 JSON 数据
         return jsonify({
             "img_lag_effect": image_base64,
-            "text1": f"ACF 和 PACF 图已生成，最大滞后阶数为 {max_lag}。",
-            'bata':beta(data),
+            "text1": f"ACF（收益率自相关）和 PACF（收益率偏自相关） 图已生成，最大滞后阶数为 {max_lag}。",
+            'beta':beta(data),
             'img_rolling_correlation':rolling_cor(data,stock,"000001.ss"),
             'text2':f"滚动相关图已生成",
             'img_cor':image_cor,
-            'correlation':f"股票 {stock} 与 000001.ss 的收益率相关性: {correlation:.4f}",
-            'Mean Return': mean1,
-            'Volatility (Std Dev)':vol, 
-            'Skewness':skew,
-            'Kurtosis':kurt
+            'correlation':f"股票 {stock} 与 000001.ss 的收益率相关性: {correlation:.8f}",
+            '股票平均收益率Mean Return': f"{mean1.item()}",
+            '上证平均收益率Mean Return':f"{mean2.item():4f}",
+            '股票标准差Volatility (Std Dev)':f"{vol1.item():8f}", 
+            '上证标准差Volatility (Std Dev)':f"{vol2.item():8f}",
+            '股票偏度Skewness':f"{skew1.item():4f}",
+            '上证偏度Skewness':f"{skew2.item():4f}",
+            '股票峰度Kurtosis':f"{kurt1.item():4f}",
+            '上证峰度Kurtosis':f"{kurt2.item():4f}"
         })
 
     except Exception as e:
@@ -235,6 +238,17 @@ def Stock_SH():
 
 
 
+@app.route('/analysis')
+def analysis():
+    return render_template('base.html', content_template="analysis.html")
+
+@app.route('/prediction')
+def prediction():
+    return render_template('base.html', content_template="prediction.html")
+
+@app.route('/trend')
+def trend():
+    return render_template('base.html', content_template="trend.html")
 
 
 if __name__ == "__main__":

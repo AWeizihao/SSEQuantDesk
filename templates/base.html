@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票分析工具</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+
+<body>
+
+    <!-- 左侧侧边栏 -->
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadPage('index')">🏠 首页</a></li>
+                <li><a href="#" onclick="loadPage('analysis')">📊 数据分析</a></li>
+                <li><a href="#" onclick="loadPage('prediction')">🔮 预测</a></li>
+                <li><a href="#" onclick="loadPage('trend')">📈 价格趋势</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主要内容区域 -->
+    <main class="content" id="main-content">
+        {% include content_template %}
+    </main>
+
+</body>
+
+</html>
