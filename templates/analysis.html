@@ -5,6 +5,12 @@
 <label for="max_lag">最大滞后阶数:</label>
 <input type="number" id="max_lag" placeholder="输入最大滞后阶数 (默认10)" value="10">
 
+<label for="start_time">开始日期:</label>
+<input type="date" id="start_date">
+
+<label for="end_date">结束日期:</label>
+<input type="date" id="end_date">
+
 <button onclick="fetchStockData()">提交</button>
 
 <div class="output" id="result">

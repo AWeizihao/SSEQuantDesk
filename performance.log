@@ -1,0 +1,165 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 560-444-273
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 560-444-273
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 560-444-273
+INFO:root:Request GET / took 0.104175 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:33:59] "GET / HTTP/1.1" 200 -
+INFO:root:Request GET /static/styles.css took 0.150373 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:34:00] "GET /static/styles.css HTTP/1.1" 200 -
+INFO:root:Request GET /static/script.js took 0.182501 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:34:00] "GET /static/script.js HTTP/1.1" 200 -
+INFO:root:Request GET /favicon.ico took 0.000248 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:34:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'E:\\Code\\Fi\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Request GET / took 0.010251 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:38:07] "GET / HTTP/1.1" 200 -
+INFO:root:Request GET /static/styles.css took 0.225087 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:38:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:root:Request GET /static/script.js took 0.224223 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:38:07] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:root:Request GET /analysis took 0.013148 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:38:55] "GET /analysis HTTP/1.1" 200 -
+INFO:root:Request GET /analysis took 0.000235 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:38:55] "GET /analysis HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 560-444-273
+INFO:root:Request GET / took 0.087009 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:45] "GET / HTTP/1.1" 200 -
+INFO:root:Request GET /static/script.js took 0.182515 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:45] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:root:Request GET /static/styles.css took 0.309781 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:root:Request GET /favicon.ico took 0.000470 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:root:Request GET /analysis took 0.011182 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:48] "GET /analysis HTTP/1.1" 200 -
+INFO:root:Request GET /analysis took 0.001284 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:48] "GET /analysis HTTP/1.1" 200 -
+INFO:root:Request POST /stock_sh took 2.687548 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:53:55] "POST /stock_sh HTTP/1.1" 200 -
+INFO:root:Request POST /stock_sh took 0.285488 seconds
+INFO:werkzeug:127.0.0.1 - - [21/Feb/2025 22:54:10] "POST /stock_sh HTTP/1.1" 200 -
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request GET / took 0.062574 seconds
+INFO:root:Request GET /static/styles.css took 0.216056 seconds
+INFO:root:Request GET /static/script.js took 0.225640 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request GET / took 0.027799 seconds
+INFO:root:Request GET /static/styles.css took 0.264538 seconds
+INFO:root:Request GET /static/script.js took 0.312545 seconds
+INFO:root:Request GET /analysis took 0.018658 seconds
+INFO:root:Request GET /analysis took 0.000295 seconds
+INFO:root:Request POST /stock_sh took 0.000132 seconds
+INFO:root:Request POST /stock_sh took 0.000163 seconds
+INFO:root:Request GET /analysis took 0.000565 seconds
+INFO:root:Request GET /static/styles.css took 0.001021 seconds
+INFO:root:Request GET /static/script.js took 0.001022 seconds
+INFO:root:Request POST /stock_sh took 0.000158 seconds
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:root:Request POST /stock_sh took 0.000195 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:28:27] "[31m[1mPOST /stock_sh HTTP/1.1[0m" 400 -
+INFO:root:Request POST /stock_sh took 0.000127 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:28:32] "[31m[1mPOST /stock_sh HTTP/1.1[0m" 400 -
+INFO:root:Request GET /analysis took 0.014950 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:28:35] "GET /analysis HTTP/1.1" 200 -
+INFO:root:Request GET /static/styles.css took 0.177479 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:28:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+INFO:root:Request GET /static/script.js took 0.177085 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:28:36] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+INFO:root:Request POST /stock_sh took 0.000326 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:29:22] "[31m[1mPOST /stock_sh HTTP/1.1[0m" 400 -
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request POST /stock_sh took 0.000143 seconds
+INFO:root:Request GET /analysis took 0.010450 seconds
+INFO:root:Request GET /static/script.js took 0.206751 seconds
+INFO:root:Request GET /static/styles.css took 0.216912 seconds
+INFO:root:Request POST /stock_sh took 0.000112 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request POST /stock_sh took 0.000453 seconds
+INFO:root:Request POST /stock_sh took 0.000394 seconds
+INFO:root:Request POST /stock_sh took 0.000428 seconds
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 560-444-273
+INFO:root:Request POST /stock_sh took 0.000485 seconds
+INFO:werkzeug:127.0.0.1 - - [24/Feb/2025 20:56:44] "[31m[1mPOST /stock_sh HTTP/1.1[0m" 400 -
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request GET /analysis took 0.018666 seconds
+INFO:root:Request GET /static/styles.css took 0.345516 seconds
+INFO:root:Request GET /static/script.js took 0.498984 seconds
+INFO:root:Request POST /stock_sh took 2.907079 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request GET / took 0.019211 seconds
+INFO:root:Request GET /static/styles.css took 0.240749 seconds
+INFO:root:Request GET /static/script.js took 0.222661 seconds
+INFO:root:Request GET /favicon.ico took 0.000581 seconds
+INFO:root:Request GET /analysis took 0.011739 seconds
+INFO:root:Request GET /analysis took 0.000326 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+ERROR:app:Exception on /server_info [GET]
+Traceback (most recent call last):
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "E:\Code\Fi\app.py", line 25, in server_info
+    return jsonify(dict(request.environ))
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\json\__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\json\provider.py", line 214, in response
+    f"{self.dumps(obj, **dump_args)}\n", mimetype=self.mimetype
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\json\provider.py", line 179, in dumps
+    return json.dumps(obj, **kwargs)
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\κ�ӜB\AppData\Local\Programs\Python\Python310\lib\site-packages\flask\json\provider.py", line 121, in _default
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+TypeError: Object of type method is not JSON serializable
+INFO:root:Request GET /server_info took 0.115117 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request HEAD / took 0.005109 seconds

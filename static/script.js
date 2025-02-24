@@ -1,13 +1,20 @@
 function fetchStockData() {
     const stock1 = document.getElementById("stock1").value || "Stock1";
     const max_lag = document.getElementById("max_lag").value || 10;
+    const start_date = document.getElementById("start_date").value;
+    const end_date = document.getElementById("end_date").value;
+
+    if (!start_date || !end_date) {
+        alert("请选择开始日期和结束日期");
+        return;
+    }
 
     fetch('/stock_sh', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ stock1, max_lag })
+            body: JSON.stringify({ stock1, max_lag, start_date, end_date })
         })
         .then(response => response.json())
         .then(data => {

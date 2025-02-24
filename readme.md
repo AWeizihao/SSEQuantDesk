@@ -4,7 +4,6 @@
 
 本项目是桌面应用，后端基于 Flask（waitress WSGI 服务器）和 python。数据来自开源 python 库 akshare。前端采用web前端，使用简单的html和javacript实现交互和可视化。
 
-
 ## ToDo List 完成度
 
 + 容器化：使用 Docker 容器化部署，更方便在各种操作系统环境下进行快速安装与更新
@@ -15,46 +14,74 @@
 
 ## 安装与运行
 
-1. **克隆项目到本地**
+### **克隆项目到本地**
 
-   ```bash
-   git clone https://github.com/AWeizihao/SSEQuantDesk.git
-   cd SSEQuantDesk
-   ```
+```bash
+git clone https://github.com/AWeizihao/SSEQuantDesk.git
+cd SSEQuantDesk
+```
 
-2. **依赖库**
-   本项目依赖库清单：
+### **依赖**
 
-   - 基础库：numpy, pandas, matplotlib, io, time, scipy, base64, logging
-   - seaborn
-     美化可视化图表
-   - statsmodels
-   - flask
-     一个轻量级的 Python Web 框架。简单、灵活，易于扩展。Flask 基于 WSGI（Web Server Gateway Interface） 和 Werkzeug 库，主要工作流程为监听http请求，随后解析并传递给视图函数，并将结果返回。
-   - waitress
-     适用于生产环境的WSGI服务器
-   - akshare
-     一个伟大的开源项目（！！），提供任意时间的资本市场数据。
++ 自动安装依赖：打开文件夹后，输入
 
-3. **启动项目**
-  在terminal里输入：
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-   ```bash
-   flask run
-   ```
+  即可
++ 本项目依赖库清单：
 
-  即可启动。
+  - **基础库**：numpy, pandas, matplotlib, io, time, scipy, base64, logging
+  - seaborn
+    美化可视化图表
+  - statsmodels
+  - flask
+    一个轻量级的 Python Web 框架。简单、灵活，易于扩展。Flask 基于 WSGI（Web Server Gateway Interface） 和 Werkzeug 库，主要工作流程为监听http请求，随后解析并传递给视图函数，并将结果返回。
+  - waitress
+    适用于windows生产环境的WSGI服务器
+  - gunicorn
+    适用于mac/linux环境的WSGI服务器
+  - akshare
+    一个伟大的开源项目（！！），提供任意时间的资本市场数据。
 
-  或（如果是vscode）使用 code runner 等插件运行 app.py 。务必使编辑器打开整个文件夹。
+### **启动项目**
+
+#### 生产环境（一般情形）
+
+  在mac和linux下，生产环境可通过在terminal中输入下列代码启动（使用gunicorn服务器）：
+
+```bash
+  gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app
+```
+
+  在win下，输入
+
+```bash
+  python wsgi.py
+```
+
+务必使编辑器打开整个文件夹。启动后，浏览器内访问默认端口 `http://127.0.0.1:5000`，即可看到项目首页。
+
+#### 开发环境
+
+* [ ]   对于开发环境，例如你需要用flask调试，在terminal里输入任意一种：
+
+```bash
+    python wsgi.py # 1
+    python app.py # 2
+```
+
+  即可启动。默认开启了debug模式。
 
   启动后，浏览器内访问默认端口 `http://127.0.0.1:5000`，即可看到项目首页。
-
 
 ## 功能介绍
 
 目前功能包含如下统计分析：
 
 + 整体分析：
+
   + 波动：标准差
   + 平均收益率
   + 统计分布，包括峰度和偏度。峰度
@@ -81,7 +108,6 @@
   * **滚动相关性** ：观察相关性是否随时间变化，可能揭示市场结构变化。
   * **β值计算** ：衡量个股相对于市场的系统性风险。
 
-
 ## 数据库文件Database
 
 HDF5 文件是通过 Pandas 的 `HDFStore` 类创建和管理的，数据被以表格式存储。数据存储在 HDF5 文件的 key 为 `'stock_date'` 的表中。使用了 `format='table'`，也就是表格式（Table Format），支持分块读写和查询操作。
@@ -100,12 +126,10 @@ HDF5 文件是通过 Pandas 的 `HDFStore` 类创建和管理的，数据被以�
 * `log_return`：对数收益率（`log(close_t / close_t-1)`）。
 * `stock_code`：股票代码。
 
-
 ## 许可证
+
 本项目采用 **MIT** 许可证，详细内容见 LICENSE 文件。
 
 ---
 
 感谢您对 SSEQuantDesk 项目的关注与支持！这最初只是一个个人用于统计分析上证股票的玩具项目。如果在使用过程中有任何疑问或想法，欢迎在 Issue 区进行探讨，或联系邮箱 `aweizihao@outlook.com`，共同完善该项目，让更多人受益于量化分析与自动化交易的乐趣与价值。
-
-

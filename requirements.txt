@@ -1,0 +1,16 @@
+pandas
+numpy
+akshare
+matplotlib
+seaborn
+scipy
+statsmodels
+flask
+sys
+io
+os
+base64
+time
+logging
+waitress; sys_platform == "win32"
+gunicorn; sys_platform != "win32"
