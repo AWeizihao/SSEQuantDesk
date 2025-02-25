@@ -163,3 +163,14 @@ INFO:root:Request GET /server_info took 0.115117 seconds
 INFO:waitress:Serving on http://0.0.0.0:5000
 INFO:waitress:Serving on http://0.0.0.0:5000
 INFO:root:Request HEAD / took 0.005109 seconds
+INFO:waitress:Serving on http://0.0.0.0:5000
+INFO:root:Request GET / took 0.023656 seconds
+INFO:root:Request GET /static/styles.css took 0.091722 seconds
+INFO:root:Request GET /static/script.js took 0.101936 seconds
+INFO:root:Request GET /favicon.ico took 0.000560 seconds
+INFO:root:Request GET /analysis took 0.016729 seconds
+INFO:root:Request GET /analysis took 0.000485 seconds
+INFO:root:Request POST /stock_sh took 0.415249 seconds
+INFO:numexpr.utils:NumExpr defaulting to 16 threads.
+INFO:root:Request POST /stock_sh took 0.805958 seconds
+INFO:root:Request POST /stock_sh took 1.258312 seconds
