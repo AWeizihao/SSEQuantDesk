@@ -1,16 +1,33 @@
 # SSEQuantDesk 股票市场量化分析工具
 
-本项目是一个基于 Python 和 HTML/JS 的股票市场统计分析平台，能实现投资组合分析，并提供（简易的）量化回测。
+本项目是一个基于 Python 和 HTML/JS 的股票市场统计分析平台。本项目的目标是测试非线性动力学和TDA（拓扑数据分析）在金融市场中的应用，但也将提供回测、统计分析等。
 
-本项目是桌面应用，后端基于 Flask（waitress WSGI 服务器）和 python。数据来自开源 python 库 akshare。前端采用web前端，使用简单的html和javacript实现交互和可视化。
+我们的目标是测验基于Takens嵌入理论与TDA的pc级神经网络在资本市场的表现。后期，我们还希望通过Wasserstein距离等测验跨市场模型的表现，通过港股实现对a股的预测。
 
-## ToDo List 完成度
+（本项目远未完成……）
 
-+ 容器化：使用 Docker 容器化部署，更方便在各种操作系统环境下进行快速安装与更新
-+ 风险控制模块
-+ 利用定时任务（如 `crontab` 或诸如 Airflow/Prefect 等调度系统）实现自动抓取、更新数据，为回测提供更加实时的行情信息。
+本项目是本地运行的，目前后端基于 Flask（waitress WSGI 服务器）和 python。数据来自开源 python 库 akshare。前端采用web前端，使用简单的html和javacript实现交互和可视化。
+
+## ToDo List
+
+### 已完成
+
++ 基础的基于jinja2的html/js前端构建
++ 股票数据下载、储存
++ 股票数据的统计处理；股票与上证指数之间的统计分析
 
 ---
+
+### 待完成
+
++ 利用Takens嵌入理论和TDA，初步完成对时间序列拓扑特征的提取
++ 使用上述特征训练模型，预测后续走向
++ 训练模型，实现使用港股数据预测a股数据
++ 接入回测
+
+### 远期规划
+
++ 使用vue重构前端
 
 ## 安装与运行
 
@@ -55,7 +72,7 @@ cd SSEQuantDesk
   gunicorn -w 4 -b 0.0.0.0:5000 wsgi:app
 ```
 
-  在win下，输入
+  在win下，使用waitress，输入
 
 ```bash
   python wsgi.py
@@ -65,7 +82,7 @@ cd SSEQuantDesk
 
 #### 开发环境
 
-* [ ]   对于开发环境，例如你需要用flask调试，在terminal里输入任意一种：
+对于开发环境，例如你需要用flask调试，在terminal里输入任意一种：
 
 ```bash
     python wsgi.py # 1
